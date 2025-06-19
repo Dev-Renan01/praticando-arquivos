@@ -7,23 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class LerArquivoTXT {
+public class LerArquivoCSV {
     public static void main(String[] args) throws FileNotFoundException {
-        FileInputStream entradaArquivo =
-                new FileInputStream(new File("C:\\praticando-arquivos\\teste-arquivo\\teste.txt")); // Entrada de dados
+        FileInputStream lerArquivo = new FileInputStream(
+                new File("C:\\praticando-arquivos\\teste-arquivo\\teste.csv"));
 
-        Scanner lerArquivo = new Scanner(entradaArquivo, "UTF-8");//Ler entradaArquivo, e a codificação desejada
-
+        Scanner sc = new Scanner(lerArquivo, "UTF-8");
 
         List<Pessoa> pessoas = new ArrayList<>();
+        while(sc.hasNext()){// enquanto o meu arquivo tiver dados...
 
-        while(lerArquivo.hasNext()){// enquanto o meu arquivo tiver dados...
+            String linha = sc.nextLine();
 
-            String linha = lerArquivo.nextLine();
-            if(linha != null && !linha.isEmpty()){
-                String [] dados = linha.split("\\;");
+            if(linha != null && !linha.isEmpty()) {
 
+                String[] dados = linha.split("\\;");
                 Pessoa pessoa = new Pessoa();
+
                 pessoa.setNome(dados[0]);
                 pessoa.setEmail(dados[1]);
                 pessoa.setIdade(Integer.parseInt(dados[2]));
@@ -34,6 +34,5 @@ public class LerArquivoTXT {
         for(Pessoa p : pessoas){
             System.out.println(p);
         }
-
     }
 }

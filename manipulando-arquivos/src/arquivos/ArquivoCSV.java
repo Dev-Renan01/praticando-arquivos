@@ -1,14 +1,14 @@
 package arquivos;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Arquivos {
+public class ArquivoCSV {
     public static void main(String[] args) throws IOException {
-
         Pessoa pessoa1 = new Pessoa();
         pessoa1.setNome("Thiago Renan");
         pessoa1.setEmail("thiago@gmail.com");
@@ -30,26 +30,21 @@ public class Arquivos {
         pessoas.add(pessoa2);
         pessoas.add(pessoa3);
 
-        File arquivo = new File("C:\\praticando-arquivos\\teste-arquivo\\teste.txt");
+        File arquivoCSV = new File("C:\\praticando-arquivos\\teste-arquivo\\teste.csv");
 
-        if (!arquivo.exists()) {
-            arquivo.createNewFile(); // Criar novo arquivo
+        if(!arquivoCSV.exists()){
+            arquivoCSV.createNewFile();
         }
 
-        FileWriter escreverNoArquivo = new FileWriter(arquivo); //Escrevendo no arquivo
+        FileWriter escreverArquivo = new FileWriter(arquivoCSV);
 
-        for(Pessoa p : pessoas){
+        for (Pessoa p : pessoas){
 
-            escreverNoArquivo.write( p.getNome()
-                    + ";"+ p.getEmail() + ";"+ p.getIdade() + "\n");
+            escreverArquivo.write(p.getNome() + ";" + p.getEmail() + ";" + p.getIdade() + "\n");
+
         }
-
-        escreverNoArquivo.flush();
-        escreverNoArquivo.close(); // fechar
-
-
-
-
+        escreverArquivo.flush();
+        escreverArquivo.close();
 
     }
 }
