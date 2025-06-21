@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlanilhaExcel {
+public class ApachePoi {
     public static void main(String[] args) throws IOException {
         File file = new File(
                 "C:\\praticando-arquivos\\praticando-arquivos\\manipulando-arquivos\\src\\arquivos\\arquivo_excel.xls");
